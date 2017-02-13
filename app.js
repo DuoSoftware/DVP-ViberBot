@@ -1,7 +1,6 @@
 const ViberBot  = require('viber-bot').Bot;
 const BotEvents = require('viber-bot').Events;
 const TextMessage = require('viber-bot').Message.Text;
-var request = require('request');
 var validator = require('validator');
 var util = require("util");
 var moment  = require('moment');
