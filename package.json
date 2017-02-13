@@ -1,0 +1,32 @@
+{
+  "name": "dvp-viberbot",
+  "version": "1.0.0",
+  "description": "viber bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuoSoftware/DVP-ViberBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuoSoftware/DVP-ViberBot/issues"
+  },
+  "homepage": "https://github.com/DuoSoftware/DVP-ViberBot#readme",
+  "dependencies": {
+    "config": "^1.25.1",
+    "express": "^4.14.1",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^7.2.1",
+    "moment": "^2.17.1",
+    "restify": "^4.3.0",
+    "socket.io-client": "^1.7.2",
+    "util": "^0.10.3",
+    "uuid": "^3.0.1",
+    "validator": "^6.2.1",
+    "viber-bot": "^1.0.6"
+  }
+}
