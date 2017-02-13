@@ -14,9 +14,11 @@ var mapID = {};
 
 
 var messengerURL = util.format("http://%s", config.Services.messengerhost);
+
 if (validator.isIP(config.Services.messengerhost))
     messengerURL = util.format("http://%s:%d", config.Services.messengerhost, config.Services.messengerport);
 
+console.log(messengerURL);
 // Creating the bot with access token, name and avatar
 const bot = new ViberBot({
     authToken: config.Viber.authToken, // <--- Paste your token here
