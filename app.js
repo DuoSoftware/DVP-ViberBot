@@ -186,6 +186,17 @@ bot.on(BotEvents.ERROR, function (error) {
     console.log("Error ",error);
 } );
 
+bot.on(BotEvents.UNSUBSCRIBED, function (response) {
+
+    console.log("unsub ",response);
+    var newUserID = response.replace(/\//g, '');
+    var newUserID = newUserID.replace(/[^\w\s]/gi, '');
+    sockets[newUserID].emit("message", {
+        message: "Client left the chat",
+        type:"text"
+    });
+    delete sockets[newUserID];
+});
 
 
 
