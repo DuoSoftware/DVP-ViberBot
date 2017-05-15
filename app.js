@@ -1,3 +1,5 @@
+
+delete process.env["DEBUG_FD"];
 const ViberBot  = require('viber-bot').Bot;
 const BotEvents = require('viber-bot').Events;
 const TextMessage = require('viber-bot').Message.Text;
@@ -179,7 +181,7 @@ bot.on(BotEvents.MESSAGE_SENT, function(message, userProfile)
 bot.on(BotEvents.CONVERSATION_STARTED, function(userProfile, onFinish)
 {
     console.log("Conversation started");
-    onFinish(new TextMessage('Nice to have a chat with you'),{ saidThanks: true });
+    //onFinish(new TextMessage('Nice to have a chat with you'),{ saidThanks: true });
 });
 
 bot.on(BotEvents.ERROR, function (error) {

@@ -19,9 +19,9 @@ module.exports = {
     },
     "Viber": {
 
-        "authToken": "4585d4373bb3fd2c-14e3267fe74b4516-d0d16d1ebd1acadf",
-        "name": "FaceTone Viber Bot",
+        "authToken": "4602e2beceb3cd4f-c39c57abeb6abdde-94f1290d3cfc416d",
+        "name": "Ftone",
         "avatar": "http://www.facetone.com/wp-content/uploads/2016/06/facetone-logo.png",
-        "webhookurl":"https://bce00fa0.ngrok.io"
+        "webhookurl":"https://ed422d4b.ngrok.io"
     }
 };
