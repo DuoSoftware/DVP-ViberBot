@@ -1,3 +1,5 @@
+
+delete process.env["DEBUG_FD"];
 const ViberBot  = require('viber-bot').Bot;
 const BotEvents = require('viber-bot').Events;
 const TextMessage = require('viber-bot').Message.Text;
@@ -32,13 +34,21 @@ const http = require('http');
 const port = config.Host.port||8080;
 
 http.createServer(bot.middleware()).listen(port, function(){
-    bot.setWebhook(config.Viber.webhookurl)});
+
+    try {
+    bot.setWebhook(config.Viber.webhookurl)
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+});
 
 bot.on(BotEvents.MESSAGE_RECEIVED, function(message, response) {
 
     console.log(message);
     //response.send(new TextMessage("Welcome home"));
-//    bot.sendMessage(response.userProfile, new TextMessage("Thanks for shopping with us"));
+//    bot.sendMessage(response.userProfile, new TextMessage("Thanks for contact Facetone"));
 
     var newUserID = response.userProfile.id.replace(/\//g, '');
     var newUserID = newUserID.replace(/[^\w\s]/gi, '');
@@ -64,7 +74,7 @@ bot.on(BotEvents.MESSAGE_RECEIVED, function(message, response) {
                 contact: "",
                 channel: 'viber',
                 jti: newUserID,
-                attributes: ["60"],
+                attributes: ["92"],
                 priority: "0",
                 name: response.userProfile.name
 
@@ -97,10 +107,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, function(message, response) {
                         //var card = createAnimationCard(session,data.name, data.avatar);
                         //var msg = new builder.Message(session).addAttachment(card);
                         //session.send(msg);
-                        //bot.sendMessage("Agent connected");
+                        // bot.sendMessage("Agent connected");
                     })
-
-
 
                     socket.on('typing', function (data) {
 
@@ -137,7 +145,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, function(message, response) {
 
 
                     socket.on('left', function(data){
-
+                        console.log("data");
+                        console.log(data);
                         bot.sendMessage(response.userProfile,new TextMessage("Agent left the chat"));
                         delete sockets[newUserID];
                         //session.endConversation();
@@ -147,6 +156,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, function(message, response) {
 
                 })
                 .on('unauthorized', function (msg) {
+                    console.log("msg");
+                    console.log(msg);
                     console.log("unauthorized: " + JSON.stringify(msg.data));
                     //throw new Error(msg.data.type);
                 })
@@ -179,7 +190,7 @@ bot.on(BotEvents.MESSAGE_SENT, function(message, userProfile)
 bot.on(BotEvents.CONVERSATION_STARTED, function(userProfile, onFinish)
 {
     console.log("Conversation started");
-    onFinish(new TextMessage('Nice to have a chat with you'),{ saidThanks: true });
+    //onFinish(new TextMessage('Nice to have a chat with you'),{ saidThanks: true });
 });
 
 bot.on(BotEvents.ERROR, function (error) {
